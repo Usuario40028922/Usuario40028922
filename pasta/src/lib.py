@@ -35,10 +35,12 @@ def seu_terminal_aguenta():
 
   a_partir_de_dez_soma_tres = (largura - 19) / 3
   formula = 3 + 16 + a_partir_de_dez_soma_tres * 3
-  print(f"Você só pode até uns {(10 + a_partir_de_dez_soma_tres) - 1}")
+  print(f"{tamanho_terminal}\nVocê só pode até uns {(10 + a_partir_de_dez_soma_tres) - 1}")
 
   print(largura, formula)
   # Tamanho em colunas (largura) e linhas (altura)
+
+
 
 def nascer_dic(largura, altura, betoalfa):
   alfabeto_maiusculo = betoalfa
@@ -50,8 +52,11 @@ def nascer_dic(largura, altura, betoalfa):
 
   for x in range(altura):
     if x > len(alfabeto_maiusculo) - 1:
+      
       for y in range(len(alfabeto_maiusculo)):
-        alfabeto.append(f"{alfabeto_maiusculo[y]}{num}")
+        string = f"{alfabeto_maiusculo[y]}{num}"
+        alfabeto.append(string)
+      
       num += 1
       alfabeto_maiusculo += alfabeto
       print(alfabeto_maiusculo)
@@ -79,20 +84,30 @@ def mostrar_dic(dicionario, betoalfa):
   valor = len(dicionario['A'])
   v = "~"
   nada = " "
-  
+  print(f"\n")
   for z in range(len(dicionario.keys())):
     print(f"{alfabeto_maiusculo[z]}", end="")
 
     for y in range(valor):
-      if z >= 26 and y >= 34:
-        print(f" {v}", end=" ")
-        continue
-      elif z >= 26:
-         print(f"{v}", end=" ")
-         continue
+      if z <= 25:
+        if y < 9:
+          print(f" {v}", end="")
+          continue
+        elif y >= 9:
+          #if z 
+          print(f"  {v}", end="")
+          continue
 
-      if y >= 8 and y < 100:
-          v += nada
+      elif z > 25:
+        if y < 9:
+          print(f"{v}", end=" ")
+          continue
+        elif y >= 9:
+          #if z 
+          print(f" {v}", end=" ")
+          continue
+        
+        
 
       #elif y > 100 and y < 1000:
           #print(f"{alfabeto_maiusculo[y]} {v}")
@@ -106,7 +121,7 @@ def mostrar_dic(dicionario, betoalfa):
 if __name__ == '__main__':
   
   seu_terminal_aguenta()
-  dicionario, alfabeto = nascer_dic(49, 49, alfabeto_maiusculo)
+  dicionario, alfabeto = nascer_dic(53, 53, alfabeto_maiusculo)
   print(len(alfabeto))
-  print("."*139)
+  print(".")
   mostrar_dic(dicionario, alfabeto)
